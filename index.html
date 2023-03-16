@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+        text-align: center;
+        color: #fff;
+        background-color: #4CAF50;
+        padding: 30px;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 3em;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+      }
+
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 20px;
+  padding: 5px;
+  border-radius: 3px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+#result {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+footer {
+  background-color: #f2f2f2;
+  color: #666;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+</style>
+<body>
+	<h1>BMI Calculator</h1>
+    <form>
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" name="weight" min="0" max="500" step="0.1" required>
+
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" name="height" min="0" max="300" step="0.1" required>
+
+      <button type="button" onclick="calculateBMI()">Calculate</button>
+    </form>
+
+    <p id="result"></p>
+
+	<script>
+		function calculateBMI() {
+  // get input values
+  var weight = parseFloat(document.getElementById("weight").value);
+  var height = parseFloat(document.getElementById("height").value);
+
+  // calculate BMI
+  var bmi = weight / ((height / 100) * (height / 100));
+
+  // determine BMI category based on BMI value
+  var category;
+  if (bmi < 18.5) {
+    category = "Underweight";
+  } else if (bmi < 25) {
+    category = "Normal weight";
+  } else if (bmi < 30) {
+    category = "Overweight";
+  } else {
+    category = "Obese";
+  }
+
+  // display result
+  var result = "Your BMI is " + bmi.toFixed(1) + ", which is " + category;
+  document.getElementById("result").innerHTML = result;
+}
+	</script>
+
+<footer>
+	<p>&copy; 2023 Gresh Kumar. </p>
+	<p>All rights reserved.</p>
+  </footer>
+</body>
+</html>
